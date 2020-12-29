@@ -5,7 +5,7 @@
     <LangVersion>latest</LangVersion>
     <Authors>Steven Pears</Authors>
     <Description>Slack endpoint for API Gateway Lambda Proxy</Description>
-    <PackageLicenseFile>main.yml</PackageLicenseFile>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/stoiveyp/Slack.NetStandard.Endpoint.ApiGatewayLambdaProxy</PackageProjectUrl>
     <RepositoryUrl>https://github.com/stoiveyp/Slack.NetStandard.Endpoint.ApiGatewayLambdaProxy</RepositoryUrl>
     <PackageTags>slack</PackageTags>
@@ -15,11 +15,11 @@
 
   <ItemGroup>
     <PackageReference Include="Amazon.Lambda.APIGatewayEvents" Version="2.4.0" />
-    <PackageReference Include="Slack.NetStandard.Endpoint" Version="1.1.0" />
+    <PackageReference Include="Slack.NetStandard.Endpoint" Version="1.1.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\..\Slack.NetStandard.Endpoint\.github\workflows\main.yml">
+    <None Include="..\..\Slack.NetStandard.Endpoint\LICENSE">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
