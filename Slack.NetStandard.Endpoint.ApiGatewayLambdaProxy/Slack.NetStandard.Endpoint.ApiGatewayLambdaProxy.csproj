@@ -9,13 +9,14 @@
     <PackageProjectUrl>https://github.com/stoiveyp/Slack.NetStandard.Endpoint.ApiGatewayLambdaProxy</PackageProjectUrl>
     <RepositoryUrl>https://github.com/stoiveyp/Slack.NetStandard.Endpoint.ApiGatewayLambdaProxy</RepositoryUrl>
     <PackageTags>slack</PackageTags>
-    <PackageReleaseNotes>Initial release</PackageReleaseNotes>
+    <PackageReleaseNotes>Simplify ApiGatewayEndpoint</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Amazon.Lambda.APIGatewayEvents" Version="2.4.0" />
-    <PackageReference Include="Slack.NetStandard.Endpoint" Version="1.1.1" />
+    <PackageReference Include="Slack.NetStandard.Endpoint" Version="1.2.0" />
   </ItemGroup>
 
   <ItemGroup>

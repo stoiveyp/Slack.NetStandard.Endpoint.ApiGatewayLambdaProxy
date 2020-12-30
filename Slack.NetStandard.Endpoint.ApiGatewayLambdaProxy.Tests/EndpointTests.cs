@@ -25,7 +25,7 @@ namespace Slack.NetStandard.Endpoint.ApiGatewayLambdaProxy.Tests
             };
             var fake = new SlackApp();
             var response = await fake.Process(request);
-            Assert.Equal((int)HttpStatusCode.BadRequest,response.StatusCode);
+            Assert.Equal(SlackRequestType.NotVerifiedRequest, response.Type);
         }
 
         [Fact]
@@ -39,18 +39,10 @@ namespace Slack.NetStandard.Endpoint.ApiGatewayLambdaProxy.Tests
                 },
                 Body = "team_id=teamx"
             };
-            var parsed = false;
-            var fake = new TestEndpoint("xxx")
-            {
-                Command = command =>
-                {
-                    Assert.Equal("teamx",command.TeamId);
-                    parsed = true;
-                    return null;
-                }
-            };
+            var fake = new TestEndpoint("xxx");
             var response = await fake.Process(request);
-            Assert.True(parsed);
+            Assert.NotNull(response.Command);
+            Assert.Equal("teamx", response.Command.TeamId);
         }
 
         [Fact]
@@ -64,18 +56,9 @@ namespace Slack.NetStandard.Endpoint.ApiGatewayLambdaProxy.Tests
                 },
                 Body = "payload="+HttpUtility.UrlEncode(JsonConvert.SerializeObject(new ViewClosedPayload{Type = InteractionType.ViewClosed}))
             };
-            var parsed = false;
-            var fake = new TestEndpoint("xxx")
-            {
-                Interaction = payload =>
-                {
-                    Assert.IsType<ViewClosedPayload>(payload);
-                    parsed = true;
-                    return null;
-                }
-            };
+            var fake = new TestEndpoint("xxx");
             var response = await fake.Process(request);
-            Assert.True(parsed);
+            Assert.IsType<ViewClosedPayload>(response.Interaction);
         }
 
         [Fact]
@@ -92,18 +75,9 @@ namespace Slack.NetStandard.Endpoint.ApiGatewayLambdaProxy.Tests
                     Type = AppHomeOpened.EventType
                 }})
             };
-            var parsed = false;
-            var fake = new TestEndpoint("xxx")
-            {
-                Event = eventResult =>
-                {
-                    Assert.IsType<AppHomeOpened>(eventResult.Event);
-                    parsed = true;
-                    return null;
-                }
-            };
+            var fake = new TestEndpoint("xxx");
             var response = await fake.Process(request);
-            Assert.True(parsed);
+            Assert.IsType<AppHomeOpened>(Assert.IsType<EventCallback>(response.Event).Event);
         }
     }
 }

@@ -9,10 +9,5 @@ namespace Slack.NetStandard.Endpoint.ApiGatewayLambdaProxy.Tests
         public SlackApp() : base("signingSecret")
         {
         }
-
-        protected override Task<APIGatewayProxyResponse> HandleCommand(SlashCommand infoCommand)
-        {
-            return base.HandleCommand(infoCommand);
-        }
     }
 }

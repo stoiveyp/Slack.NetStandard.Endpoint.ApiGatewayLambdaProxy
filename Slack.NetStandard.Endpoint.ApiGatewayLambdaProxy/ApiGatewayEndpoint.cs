@@ -9,7 +9,7 @@ using Slack.NetStandard.Interaction;
 
 namespace Slack.NetStandard.Endpoint.ApiGatewayLambdaProxy
 {
-    public abstract class ApiGatewayEndpoint : SlackRequestHandler<APIGatewayProxyRequest, APIGatewayProxyResponse>
+    public abstract class ApiGatewayEndpoint : SlackEndpoint<APIGatewayProxyRequest>
     {
         private readonly RequestVerifier Verifier;
 
@@ -47,51 +47,6 @@ namespace Slack.NetStandard.Endpoint.ApiGatewayLambdaProxy
             };
 
             return Task.FromResult(result);
-        }
-
-        protected override Task<APIGatewayProxyResponse> DefaultOKResponse(string body = null)
-        {
-            return Task.FromResult(new APIGatewayProxyResponse
-            {
-                StatusCode = (int)HttpStatusCode.OK,
-                Body = body
-            });
-        }
-
-        protected override Task<APIGatewayProxyResponse> InvalidRequestResponse(SlackInformation info, APIGatewayProxyRequest request)
-        {
-            return Task.FromResult(new APIGatewayProxyResponse
-            {
-                StatusCode = (int)HttpStatusCode.BadRequest,
-                Body = info.Type.ToString()
-            });
-        }
-
-        protected override Task<APIGatewayProxyResponse> HandleCommand(SlashCommand infoCommand)
-        {
-            return Task.FromResult(new APIGatewayProxyResponse
-            {
-                StatusCode = (int)HttpStatusCode.InternalServerError,
-                Body = "Command not supported"
-            });
-        }
-
-        protected override Task<APIGatewayProxyResponse> HandleInteraction(InteractionPayload infoInteraction)
-        {
-            return Task.FromResult(new APIGatewayProxyResponse
-            {
-                StatusCode = (int)HttpStatusCode.InternalServerError,
-                Body = "Interaction not supported"
-            });
-        }
-
-        protected override Task<APIGatewayProxyResponse> HandleEventCallback(EventCallback infoEvent)
-        {
-            return Task.FromResult(new APIGatewayProxyResponse
-            {
-                StatusCode = (int)HttpStatusCode.InternalServerError,
-                Body = "Event callback not supported"
-            });
         }
     }
 }
