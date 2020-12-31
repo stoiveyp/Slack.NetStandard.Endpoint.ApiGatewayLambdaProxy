@@ -10,18 +10,7 @@ private class SlackApp : ApiGatewayEndpoint
 {
     public SlackApp(string signingSecret) : base(signingSecret)
     {
-    }
-
-    protected override Task<APIGatewayProxyResponse> HandleCommand(SlashCommand infoCommand)
-    {
-        return base.HandleCommand(infoCommand);
-    }
-
-    protected override Task<ApiGatewayProxyResponse> HandleInteraction(InteractionPayload infoInteraction){
-        return infoInteraction switch {
-            GlobalShortcutPayload { CallbackId: "adventure_create" } adventurecreate => await CreateAdventure.Shortcut(adventurecreate),
-            ViewSubmissionPayload viewSubmission => await ViewSubmission(client, viewSubmission),
-        }
+    
     }
 }
 ```
@@ -31,11 +20,14 @@ private class SlackApp : ApiGatewayEndpoint
 ```csharp
 public Function(){
     var signingSecret = //retrieve signing secret...
-    AppEndpoint = new SlackApp(signingSecret);
+    Endpoint = new APIGatewayEndpoint(signingSecret);
 }
 
 public Task<APIGatewayProxyResponse> FunctionHandler(APIGatewayProxyRequest input)
 {
-    return AppEndpoint.Process(input);
+    var slackInfo = AppEndpoint.Process(input);
+    if(slackInfo.Command != null && slackInfo.Command.Command == "/weather"){
+       ...
+    }
 }
 ```
