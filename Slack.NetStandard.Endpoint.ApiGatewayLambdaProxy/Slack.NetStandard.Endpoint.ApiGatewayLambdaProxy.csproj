@@ -11,7 +11,7 @@
     <PackageTags>slack</PackageTags>
     <PackageReleaseNotes>Simplify ApiGatewayEndpoint</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.1.1</Version>
+    <Version>1.1.2</Version>
   </PropertyGroup>
 
   <ItemGroup>

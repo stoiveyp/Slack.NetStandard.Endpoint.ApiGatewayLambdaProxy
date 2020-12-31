@@ -9,7 +9,7 @@ using Slack.NetStandard.Interaction;
 
 namespace Slack.NetStandard.Endpoint.ApiGatewayLambdaProxy
 {
-    public abstract class ApiGatewayEndpoint : SlackEndpoint<APIGatewayProxyRequest>
+    public class ApiGatewayEndpoint : SlackEndpoint<APIGatewayProxyRequest>
     {
         private readonly RequestVerifier Verifier;
 
