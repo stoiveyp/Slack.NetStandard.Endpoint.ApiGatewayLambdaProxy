@@ -11,7 +11,7 @@ public Function(){
 
 public Task<APIGatewayProxyResponse> FunctionHandler(APIGatewayProxyRequest input)
 {
-    var slackInfo = AppEndpoint.Process(input);
+    var slackInfo = Endpoint.Process(input);
     if(slackInfo.Command != null && slackInfo.Command.Command == "/weather"){
        ...
     }
