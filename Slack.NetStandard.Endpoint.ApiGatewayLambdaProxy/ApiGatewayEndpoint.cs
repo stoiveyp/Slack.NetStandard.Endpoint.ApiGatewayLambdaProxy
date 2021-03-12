@@ -30,11 +30,6 @@ namespace Slack.NetStandard.Endpoint.ApiGatewayLambdaProxy
             return verifier.Verify(request.Headers[RequestVerifier.SignatureHeaderName], timestamp, request.Body);
         }
 
-        public Task<SlackInformation> ProcessRequest(APIGatewayProxyRequest request)
-        {
-            return GenerateInformation(request);
-        }
-
         protected override Task<SlackInformation> GenerateInformation(APIGatewayProxyRequest request)
         {
             if (!IsValid(Verifier, request))
