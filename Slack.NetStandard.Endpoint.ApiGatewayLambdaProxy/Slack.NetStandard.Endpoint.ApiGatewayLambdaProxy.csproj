@@ -9,9 +9,9 @@
     <PackageProjectUrl>https://github.com/stoiveyp/Slack.NetStandard.Endpoint.ApiGatewayLambdaProxy</PackageProjectUrl>
     <RepositoryUrl>https://github.com/stoiveyp/Slack.NetStandard.Endpoint.ApiGatewayLambdaProxy</RepositoryUrl>
     <PackageTags>slack</PackageTags>
-    <PackageReleaseNotes>Make ApiGatewayEndpoint public</PackageReleaseNotes>
+    <PackageReleaseNotes>Add ProcessRequest to allow for public processing of requests</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.1.3</Version>
+    <Version>1.1.4</Version>
   </PropertyGroup>
 
   <ItemGroup>
