@@ -13,7 +13,7 @@ namespace Slack.NetStandard.Endpoint.ApiGatewayLambdaProxy
     {
         private readonly RequestVerifier Verifier;
 
-        protected ApiGatewayEndpoint(string signingSecret)
+        public ApiGatewayEndpoint(string signingSecret)
         {
             Verifier = new RequestVerifier(signingSecret);
         }
